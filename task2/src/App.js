@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import ProductList from './ProductList';
-import ProductDetail from './ProductDetail';
+import ProductList from './components/ProductList';
+import ProductDetail from './components/ProductDetails';
 
 const App = () => {
-  const [products, setProducts] = useState([]);
-
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<ProductList setProducts={setProducts} />} />
-        <Route path="/product/:productId" element={<ProductDetail products={products} />} />
-      </Routes>
+      <div className="App">
+        <h1>Top N Products</h1>
+        <Routes>
+          <Route path="/" element={<ProductList />} />
+          <Route path="/product/:id" element={<ProductDetail />} />
+        </Routes>
+      </div>
     </Router>
   );
 };
